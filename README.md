@@ -2,7 +2,7 @@
 
 ## Korte introductie
 
-Voor dit project heb ik een bestaande illustratie gekozen om na te bootsen in CSS. Hierbij heb ik gebruik gemaakt van clip-paths, data-themes, CSS-variablen, DOM-manipulatie, transform en calc. 
+Voor dit project heb ik een bestaande illustratie gekozen om na te bootsen in CSS. Hierbij heb ik gebruik gemaakt van clip-paths, data-themes, CSS-variabelen, DOM-manipulatie, transform en calc. 
 
 De animaties zijn te zien op: http://milansteman.github.io/animeren_met_css/.
 
