@@ -8,7 +8,8 @@ De animaties zijn te zien op: http://milansteman.github.io/animeren_met_css/.
 
 Originele illustratie:
 
-!(assets/images/original_illustration.jpg)
+![](assets/images/original_illustration.jpg)
+
 
 https://static.vecteezy.com/system/resources/previews/000/174/100/non_2x/free-hand-drawn-vector-nightscape-illustration.jpg
 
