@@ -1,0 +1,1264 @@
+/****************************************************************************
+1.0 - Globaal */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Animatie om de lucht donker te maken wanneer het nacht is */
+@keyframes maakLuchtNacht {
+    0% {
+        background-color: var(--main-bg-color);
+    }
+
+    100% {
+        background-color: var(--night-color);
+    }
+}
+
+body {
+    --main-bg-color: #45B5A5;
+    --window-color: #51E1D8;
+    --night-color: #183F48;
+    --yellow: #FFFF33;
+    --dark: #020F18;
+    --darkblue: #0B2035;
+    --darkblue2: #054C5E;
+    --darkblue3: #134F5A;
+    --blue: #19616D;
+    --lightblue: #1A6777;
+    --lightblue2: #57F8D9;
+
+    overflow: hidden;
+    animation-name: maakLuchtNacht;
+    background-color: var(--main-bg-color);
+    animation-duration: 30s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-delay: 10s;
+}
+
+body[data-theme="purple"] {
+    --main-bg-color: #C15DC1;
+    --window-color: #E66AD3;
+    --night-color: #542437;
+    --dark: #330A09;
+    --darkblue: #421715;
+    --darkblue2: #6B1030;
+    --darkblue3: #66203F;
+    --blue: #7A284D;
+    --lightblue: #852A50;
+    --lightblue2: #F270F9;
+}
+
+body[data-theme="yellow"] {
+    --main-bg-color: #826E24;
+    --window-color: #AD962D;
+    --night-color: #7A721C;
+    --dark: #3B3508;
+    --darkblue: #453F08;
+    --darkblue2: #4A4A0D;
+    --darkblue3: #8C7F0F;
+    --blue: #5F690C;
+    --lightblue: #918716;
+    --lightblue2: #C4A231;
+}
+
+/* Knipperen licht van het raam */
+@keyframes knipperLicht {
+    0% {
+        background-color: var(--window-color);
+    }
+
+    25% {
+        background-color: var(--yellow);
+    }
+
+    80% {
+        background-color: var(--window-color);
+    }
+}
+
+.raam, .raam2 {
+    position: relative;
+    background-color: var(--window-color);
+    animation-name: knipperLicht; /* Animatie voor het geel maken van de ramen */
+    animation-duration: 60s;
+    animation-delay: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+/* Globale stijling achtergrond */
+.voorgrond .achtergrond {
+    position: absolute;
+    width: 100vw;
+    height: 20vw;
+}
+
+.voorgrond .piek { /* Globale stijlen voorgrond pieken */
+    position: absolute;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+/****************************************************************************
+2.0 - Eerste voorgrond */
+.voorgrond1 .achtergrond {
+    background-color: var(--dark);
+    clip-path: polygon(44% 79%, 63% 75%, 86% 78%, 100% 78%, 100% 100%, 0 100%, 0 77%, 24% 83%);
+    bottom: 0;
+    z-index: 100;
+}
+
+/****************************************************************************
+3.0 - Tweede voorgrond */
+.voorgrond2 .achtergrond {
+    background-color: var(--darkblue);
+    clip-path: polygon(39% 76%, 54% 72%, 80% 76%, 100% 74%, 100% 100%, 0 100%, 0 77%, 18% 74%);
+    bottom: 3vw;
+    z-index: 90;
+}
+
+.voorgrond2 .piek {
+    background-color: var(--darkblue);
+    bottom: 6vw;
+    z-index: 90;
+}
+
+.voorgrond2 .piek:nth-child(1) {
+    left: 1.5vw;
+    width: 4vw;
+    height: 8vw;
+    transform: rotate(7deg);
+}
+
+.voorgrond2 .piek:nth-child(2) {
+    left: 4vw;
+    width: 7vw;
+    height: 11vw;
+    transform: rotate(5deg);
+}
+
+.voorgrond2 .piek:nth-child(3) {
+    left: 10vw;
+    width: 4vw;
+    height: 7vw;
+}
+
+.voorgrond2 .pieken .piek:nth-child(4) {
+    left: 80vw;
+    width: 4vw;
+    height: 8vw;
+}
+
+.voorgrond2 .pieken .piek:nth-child(5) {
+    left: 87vw;
+    width: 8vw;
+    height: 15vw;
+}
+
+/****************************************************************************
+4.0 - Derde voorgrond */
+.voorgrond3 .achtergrond {
+    position: absolute;
+    background-color: var(--darkblue2);
+    clip-path: polygon(29% 70%, 49% 72%, 66% 64%, 82% 57%, 100% 58%, 100% 100%, 0 100%, 0 66%, 3% 62%, 13% 66%);
+    bottom: 4vw;
+    z-index: 80;
+}
+
+/****************************************************************************
+5.0 - Vierde voorgrond */
+/* Animatie wave voor de pieken */
+@keyframes wave {
+    0% {
+        transform: rotate(5deg);
+    }
+
+    100% {
+        transform: rotate(-5deg);
+    }
+}
+
+.voorgrond4 .piek, .voorgrond5 .piek {
+    animation-name: wave;
+    animation-duration: 2s; /* 2s voor voorgrond4, 2.5s voor voorgrond 5. */
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+.voorgrond4 .achtergrond {
+    background-color: var(--blue);
+    clip-path: polygon(0% 70%, 5% 68%, 10% 67%, 23% 67%, 30% 72%, 33% 75%, 41% 83%, 54% 87%, 70% 83%, 83% 77%, 93% 67%, 100% 62%, 100% 100%, 0% 100%);
+    bottom: 9.2vw;
+    z-index: 70;
+}
+
+.voorgrond4 .piek { /* Globale stijling pieken voor voorgrond 4 */
+    background-color: var(--blue);
+    bottom: 10vw;
+    z-index: 70;
+}
+
+.voorgrond4 .piek:nth-child(1) {
+    left: 1.5vw;
+    width: 4vw;
+    height: 8vw;
+    transform: rotate(7deg);
+}
+
+.voorgrond4 .piek:nth-child(2) {
+    left: 1vw;
+    width: 4vw;
+    height: 8vw;
+    transform: rotate(350deg);
+}
+
+.voorgrond4 .piek:nth-child(3) {
+    left: .1vw;
+    width: 2vw;
+    height: 9vw;
+    transform: rotate(350deg);
+}
+
+.voorgrond4 .piek:nth-child(4) {
+    left: 5vw;
+    width: 5vw;
+    height: 9vw;
+    transform: rotate(8deg);
+}
+
+.voorgrond4 .piek:nth-child(5) {
+    left: 4.5vw;
+    width: 3vw;
+    height: 9vw;
+    transform: rotate(352deg);
+}
+
+.voorgrond4 .piek:nth-child(6) {
+    left: 8vw;
+    width: 3vw;
+    height: 8vw;
+    transform: rotate(7deg);
+}
+
+.voorgrond4 .piek:nth-child(7) {
+    left: 10vw;
+    width: 5vw;
+    height: 9vw;
+    transform: rotate(12deg);
+}
+
+.voorgrond4 .piek:nth-child(8) {
+    left: 14vw;
+    width: 5vw;
+    height: 7.2vw;
+    transform: rotate(350deg);
+}
+
+.voorgrond4 .piek:nth-child(9) {
+    left: 12vw;
+    width: 5vw;
+    height: 7vw;
+    transform: rotate(350deg);
+}
+
+.voorgrond4 .piek:nth-child(10) {
+    left: 7.5vw;
+    width: 5vw;
+    height: 7vw;
+    transform: rotate(2deg);
+}
+
+.voorgrond4 .piek:nth-child(11) {
+    left: 25vw;
+    width: 5vw;
+    height: 7vw;
+    transform: rotate(2deg);
+}
+
+.voorgrond4 .piek:nth-child(12) {
+    left: 27vw;
+    width: 7vw;
+    height: 8vw;
+    transform: rotate(4deg);
+}
+
+.voorgrond4 .piek:nth-child(13) {
+    left: 30.8vw;
+    width: 3vw;
+    height: 7vw;
+    transform: rotate(14deg);
+}
+
+.voorgrond4 .piek:nth-child(14) {
+    left: 26.5vw;
+    width: 5vw;
+    height: 7.8vw;
+    transform: rotate(355deg);
+}
+
+.voorgrond4 .piek:nth-child(15) {
+    left: 48vw;
+    width: 3vw;
+    height: 4.3vw;
+    transform: rotate(355deg);
+}
+
+.voorgrond4 .piek:nth-child(16) {
+    left: 48.4vw;
+    width: 5vw;
+    height: 5.2vw;
+    transform: rotate(2deg);
+}
+
+.voorgrond4 .piek:nth-child(17) {
+    left: 51vw;
+    width: 3vw;
+    height: 6vw;
+    transform: rotate(355deg);
+}
+
+.voorgrond4 .piek:nth-child(18) {
+    left: 51.8vw;
+    width: 3vw;
+    height: 4.5vw;
+    transform: rotate(355deg);
+}
+
+.voorgrond4 .piek:nth-child(19) {
+    left: 70vw;
+    width: 3vw;
+    height: 6vw;
+    transform: rotate(5deg);
+}
+
+.voorgrond4 .piek:nth-child(20) {
+    left: 72.5vw;
+    width: 5vw;
+    height: 8vw;
+    transform: rotate(5deg);
+}
+
+.voorgrond4 .piek:nth-child(21) {
+    left: 71vw;
+    width: 3vw;
+    height: 5vw;
+    transform: rotate(5deg);
+}
+
+.voorgrond4 .piek:nth-child(22) {
+    left: 80vw;
+    width: 3vw;
+    height: 6vw;
+    transform: rotate(5deg);
+}
+
+.voorgrond4 .piek:nth-child(23) {
+    left: 82vw;
+    width: 3vw;
+    height: 7.5vw;
+    transform: rotate(355deg);
+}
+
+.voorgrond4 .piek:nth-child(24) {
+    left: 85vw;
+    width: 5.5vw;
+    height: 10vw;
+    transform: rotate(350deg);
+}
+
+.voorgrond4 .piek:nth-child(25) {
+    left: 83vw;
+    width: 6.5vw;
+    height: 9vw;
+    transform: rotate(350deg);
+}
+
+.voorgrond4 .piek:nth-child(26) {
+    left: 93vw;
+    width: 5vw;
+    height: 10vw;
+    transform: rotate(350deg);
+}
+
+.voorgrond4 .piek:nth-child(27) {
+    left: 95vw;
+    width: 5vw;
+    height: 12.5vw;
+    transform: rotate(345deg);
+}
+
+.voorgrond4 .piek:nth-child(28) {
+    left: 96vw;
+    width: 6vw;
+    height: 12vw;
+    transform: rotate(353deg);
+}
+
+/****************************************************************************
+6.0 - Vijfde voorgrond */
+.voorgrond5 .achtergrond {
+    background-color: var(--lightblue);
+    clip-path: polygon(0% 44%, 2% 40%, 12% 39%, 23% 45%, 30% 51%, 40% 53%, 54% 56%, 64% 52%, 76% 42%, 84% 36%, 90% 30%, 100% 38%, 100% 38%, 100% 100%, 0% 100%);
+    bottom: 8vw;
+    z-index: 50;
+}
+
+.voorgrond5 .piek { /* Globale stijling pieken voor voorgrond 5 */
+    background-color: var(--lightblue);
+    bottom: 17vw;
+    z-index: 50;
+    animation-duration: 2.5s;
+}
+
+.voorgrond5 .piek:nth-child(1) {
+    left: 96.5vw;
+    width: 6vw;
+    height: 10vw;
+    transform: rotate(5deg);
+}
+
+.voorgrond5 .piek:nth-child(2) {
+    left: 96vw;
+    width: 4vw;
+    height: 9vw;
+    transform: rotate(5deg);
+}
+
+.voorgrond5 .piek:nth-child(3) {
+    left: 95vw;
+    width: 4vw;
+    height: 8vw;
+    transform: rotate(5deg);
+}
+
+.voorgrond5 .piek:nth-child(4) {
+    left: 94vw;
+    width: 3vw;
+    height: 8vw;
+    transform: rotate(7deg);
+}
+
+.voorgrond5 .piek:nth-child(5) {
+    left: 92vw;
+    width: 5vw;
+    height: 8vw;
+    transform: rotate(355deg);
+}
+
+.voorgrond5 .piek:nth-child(6) {
+    left: 90vw;
+    width: 5vw;
+    height: 9vw;
+    transform: rotate(358deg);
+}
+
+.voorgrond5 .piek:nth-child(6) {
+    left: 90vw;
+    width: 5vw;
+    height: 9vw;
+    transform: rotate(358deg);
+}
+
+.voorgrond5 .piek:nth-child(7) {
+    left: 88vw;
+    width: 5vw;
+    height: 10.5vw;
+    transform: rotate(358deg);
+}
+
+.voorgrond5 .piek:nth-child(8) {
+    left: 86vw;
+    width: 5vw;
+    height: 11.5vw;
+    transform: rotate(354deg);
+}
+
+.voorgrond5 .piek:nth-child(9) {
+    left: 84vw;
+    width: 5vw;
+    height: 10.5vw;
+    transform: rotate(353deg);
+}
+
+.voorgrond5 .piek:nth-child(10) {
+    left: 82vw;
+    width: 5vw;
+    height: 9.5vw;
+    transform: rotate(356deg);
+}
+
+.voorgrond5 .piek:nth-child(11) {
+    left: 80vw;
+    width: 5vw;
+    height: 8.7vw;
+    transform: rotate(356deg);
+}
+
+.voorgrond5 .piek:nth-child(12) {
+    left: 79vw;
+    width: 4vw;
+    height: 7.7vw;
+    transform: rotate(356deg);
+}
+
+.voorgrond5 .piek:nth-child(13) {
+    left: 77.5vw;
+    width: 4vw;
+    height: 7.7vw;
+    transform: rotate(354deg);
+}
+
+.voorgrond5 .piek:nth-child(14) {
+    left: 76vw;
+    width: 4vw;
+    height: 6.8vw;
+    transform: rotate(354deg);
+}
+
+.voorgrond5 .piek:nth-child(15) {
+    left: 73.5vw;
+    width: 5vw;
+    height: 6vw;
+    transform: rotate(354deg);
+}
+
+.voorgrond5 .piek:nth-child(16) {
+    left: 72vw;
+    width: 4vw;
+    height: 6.8vw;
+    transform: rotate(356deg);
+}
+
+.voorgrond5 .piek:nth-child(17) {
+    left: 70vw;
+    width: 4vw;
+    height: 6vw;
+    transform: rotate(2deg);
+}
+
+.voorgrond5 .piek:nth-child(18) {
+    left: 68vw;
+    width: 5vw;
+    height: 6vw;
+    transform: rotate(355deg);
+}
+
+.voorgrond5 .piek:nth-child(19) {
+    left: 66.5vw;
+    width: 4vw;
+    height: 5vw;
+    transform: rotate(355deg);
+}
+
+.voorgrond5 .piek:nth-child(20) { /* Linkerkant pieken */
+    left: -1vw;
+    width: 4vw;
+    height: 6.5vw;
+    transform: rotate(6deg);
+}
+
+.voorgrond5 .piek:nth-child(21) {
+    width: 6vw;
+    height: 7.5vw;
+    transform: rotate(2deg);
+}
+
+.voorgrond5 .piek:nth-child(22) {
+    left: 2vw;
+    width: 4.5vw;
+    height: 8.5vw;
+    transform: rotate(2deg);
+}
+
+.voorgrond5 .piek:nth-child(23) {
+    left: 2.5vw;
+    width: 6vw;
+    height: 8.5vw;
+    transform: rotate(2deg);
+}
+
+.voorgrond5 .piek:nth-child(24) {
+    left: 4vw;
+    width: 6vw;
+    height: 9.5vw;
+    transform: rotate(7deg);
+}
+
+.voorgrond5 .piek:nth-child(25) {
+    left: 6vw;
+    width: 6vw;
+    height: 10.5vw;
+    transform: rotate(7deg);
+}
+
+.voorgrond5 .piek:nth-child(26) {
+    left: 7vw;
+    width: 7vw;
+    height: 10.5vw;
+    transform: rotate(7deg);
+}
+
+.voorgrond5 .piek:nth-child(27) {
+    left: 9vw;
+    width: 7vw;
+    height: 8.5vw;
+    transform: rotate(7deg);
+}
+
+.voorgrond5 .piek:nth-child(28) {
+    left: 10.5vw;
+    width: 7vw;
+    height: 9.5vw;
+    transform: rotate(7deg);
+}
+
+.voorgrond5 .piek:nth-child(29) {
+    left: 12.5vw;
+    width: 7vw;
+    height: 9.5vw;
+    transform: rotate(7deg);
+}
+
+.voorgrond5 .piek:nth-child(30) {
+    left: 14.5vw;
+    width: 7vw;
+    height: 8.5vw;
+    transform: rotate(7deg);
+}
+
+.voorgrond5 .piek:nth-child(31) {
+    left: 16.5vw;
+    width: 7vw;
+    height: 7.5vw;
+    transform: rotate(7deg);
+}
+
+.voorgrond5 .piek:nth-child(32) {
+    left: 17.5vw;
+    width: 7vw;
+    height: 8.5vw;
+    transform: rotate(7deg);
+}
+
+.voorgrond5 .piek:nth-child(33) {
+    left: 19.5vw;
+    width: 7vw;
+    height: 6.5vw;
+    transform: rotate(7deg);
+}
+
+.voorgrond5 .piek:nth-child(34) {
+    left: 21vw;
+    width: 7vw;
+    height: 5.5vw;
+    transform: rotate(7deg);
+}
+
+.voorgrond5 .piek:nth-child(35) {
+    left: 24vw;
+    width: 4vw;
+    height: 4.5vw;
+    transform: rotate(7deg);
+}
+
+.voorgrond5 .piek:nth-child(36) {
+    left: 25vw;
+    width: 4vw;
+    height: 4vw;
+    transform: rotate(7deg);
+}
+
+.voorgrond5 .piek:nth-child(36) {
+    left: 25vw;
+    width: 5vw;
+    height: 4.5vw;
+    transform: rotate(7deg);
+}
+
+.voorgrond5 .piek:nth-child(37) {
+    left: 26vw;
+    width: 5vw;
+    height: 3.5vw;
+    transform: rotate(7deg);
+}
+
+.voorgrond5 .piek:nth-child(38) {
+    left: 28vw;
+    width: 4vw;
+    height: 3vw;
+    transform: rotate(7deg);
+}
+
+/****************************************************************************
+7.0 - Zesde voorgrond */
+/* Animatie voor de zon donker te maken wanneer het nacht is */
+@keyframes maakZonNacht {
+    0% {
+        background-color: var(--lightblue2);
+    }
+
+    100% {
+        background-color: var(--darkblue);
+    }
+}
+
+.voorgrond6 {
+    position: absolute;
+    background-color: var(--lightblue2);
+    border-radius: 50%;
+    box-shadow: inset 0 1.5em .5em #ffeeddcc; /* schaduw zon */
+    left: 26vw;
+    top: calc(50vh - 24vw);
+    width: 48vw;
+    height: 48vw;
+    animation-name: maakZonNacht;
+    animation-duration: 30s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-delay: 10s;
+}
+
+/************************************************************************
+7.1 - Trein */
+@keyframes beweegTrein {
+    100% {
+        transform: translateX(100vw);
+    }
+}
+
+.trein {
+    animation-name: beweegTrein;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    position: absolute;
+    z-index: 40;
+    left: -50vw;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+/* Cabine */
+.cabine {
+    background-color: var(--dark);
+    position: relative;
+    width: 8vw;
+    height: 3vw;
+    top: 28.8vw;
+    z-index: 250;
+    border-radius: 1vw 3vw 0 0;
+}
+
+.cabine .raam {
+    position: absolute;
+    width: 4vw;
+    height: 1.5vw;
+    left: 3vw;
+    top: .5vw;
+    animation: none;
+    border-radius: 0 3vw 0 0;
+}
+
+.cabine .raam:nth-of-type(2n) {
+    border-radius: .5vw 0 0 0;
+    left: .75vw;
+    width: 2vw;
+}
+
+/* Wagon */
+.wagon {
+    background-color: var(--dark);
+    position: relative;
+    width: 8vw;
+    height: 3vw;
+    top: 28.8vw;
+    margin-right: .3vw;
+    z-index: 250;
+    border-radius: 1vw 1vw 0 0;
+}
+
+.wagon .raam {
+    position: absolute;
+    width: 3.4vw;
+    height: 1.5vw;
+    left: 4.2vw;
+    top: .5vw;
+    animation: none;
+    border-radius: 0 .5vw 0 0;
+}
+
+.wagon .raam:nth-of-type(2n) {
+    border-radius: .5vw 0 0 0;
+    left: .5vw;
+}
+
+/************************************************************************
+7.2 - Stad */
+.stad {
+    position: absolute;
+    left: 3.5vw;
+    top: 3.5vw;
+    width: 41vw;
+    height: 41vw;
+    z-index: 10;
+}
+
+/* Eerste Huis */
+.huis1 {
+    position: absolute;
+    background-color: var(--night-color);
+    clip-path: polygon(0 15%, 27% 24%, 27% 0, 50% 0, 50% 30%, 100% 44%, 100% 100%, 0 100%);
+    bottom: 12vw;
+    width: 4.9vw;
+    height: 8vw;
+}
+
+/* Wolkje fabriek */
+@keyframes fabriekRook { /* Animatie rook */
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.rook { /* Rook voor de fabriek */
+    animation-name: fabriekRook;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.wolk { /* Globale stijl wolk */
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+}
+
+/* Grote wolk */
+.groteWolk .wolk {
+    bottom: 20.3vw;
+    left: 1.4vw;
+    width: 1vw;
+    height: 1vw;
+}
+
+.groteWolk .wolk:nth-of-type(2n) {
+    left: 1.7vw;
+    bottom: 20.5vw;
+}
+
+.groteWolk .wolk:nth-of-type(3n) {
+    left: 1.2vw;
+    bottom: 20.7vw;
+}
+
+/* Kleine wolk */
+.kleineWolk .wolk {
+    top: 18.2vw;
+    left: 2vw;
+    width: .7vw;
+    height: .7vw
+}
+
+.kleineWolk .wolk:nth-of-type(2n) {
+    top: 18vw;
+    left: 2.2vw;
+}
+
+.kleineWolk .wolk:nth-of-type(3n) {
+    top: 18.3vw;
+    left: 2.2vw;
+}
+
+/* Tweede huis */
+.huis2 {
+    position: absolute;
+    background-color: var(--night-color);
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
+    left: 4.5vw;
+    bottom: 12vw;
+    width: 5vw;
+    height: 11vw;
+}
+
+/* Derde huis */
+.huis3 {
+    position: absolute;
+    background-color: var(--darkblue3);
+    clip-path: polygon(43% 26%, 74% 19%, 74% 26%, 100% 26%, 100% 100%, 0 100%, 0 26%, 12% 26%, 43% 19%);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    left: 6.7vw;
+    bottom: 12vw;
+    width: 4.5vw;
+    height: 9vw;
+    z-index: 1;
+}
+
+.huis3 .raam { /* Raam voor huis 3 */
+    position: relative;
+    background-color: var(--window-color);
+    top: 3vw;
+    width: .4vw;
+    height: 10vw;
+    animation-delay: 24s;
+}
+
+/* Vierde huis */
+.huis4 {
+    position: absolute;
+    background-color: var(--night-color);
+    clip-path: polygon(21% 9%, 79% 0, 79% 24%, 100% 24%, 100% 100%, 0 100%, 0 24%, 21% 24%);
+    left: 11vw;
+    bottom: 12vw;
+    width: 6.5vw;
+    height: 17.5vw;
+}
+
+.uitsteeksel { /* Uitsteeksel van het vierde huis */
+    position: absolute;
+    background-color: var(--night-color);
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+    left: 10.4vw;
+    bottom: 19.5vw;
+    width: 1vw;
+    height: 1.5vw;
+    z-index: 10;
+}
+
+/* Vijfde huis */
+.huis5 {
+    position: absolute;
+    background-color: var(--darkblue3);
+    clip-path: polygon(0 23%, 100% 0%, 100% 100%, 0% 100%);
+    left: 11.5vw;
+    bottom: 12vw;
+    width: 4.5vw;
+    height: 13vw;
+    z-index: 1;
+}
+
+.wrapperRaamRow { /* Wrapper voor flexbox */
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    top: 3.5vw;
+    margin-bottom: .5vw;
+}
+
+.huis5 .raam, .huis5 .raam2 { /* Globale stijl ramen voor huis 5 */
+    width: 1.2vw;
+    height: 1.2vw;
+    z-index: 2;
+    animation-delay: 27s;
+}
+
+.huis5 .raam2 { /* Groot raam voor huis 5 */
+    width: 3.5vw;
+    animation-delay: 31s;
+}
+
+/* Zesde huis */
+.huis6 {
+    position: absolute;
+    background-color: var(--night-color);
+    clip-path: polygon(100% 21%, 100% 100%, 0 100%, 0 0);
+    left: 17vw;
+    bottom: 12vw;
+    width: 4.5vw;
+    height: 11vw;
+}
+
+.huis6 .raam { /* Raam voor huis 6 */
+    border-radius: 1vh;
+    top: 5.5vw;
+    width: 3vw;
+    height: 1vw;
+    margin-bottom: 1vh;
+    animation-delay: 22s;
+}
+
+/* Zevende huis */
+.huis7 {
+    position: absolute;
+    background-color: var(--darkblue3);
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 22vw;
+    bottom: 12vw;
+    width: 7vw;
+    height: 12.5vw;
+    z-index: 2;
+}
+
+.huis7 .raam { /* Raam voor huis 7 */
+    top: 1vw;
+    width: 5.5vw;
+    height: 1vw;
+    margin-bottom: 1vh;
+    animation-delay: 31s;
+}
+
+.uitsteeksel2 { /* Bovenste uitsteeksel voor huis 7 */
+    position: absolute;
+    background-color: var(--darkblue3);
+    clip-path: polygon(0 84%, 100% 39%, 100% 100%, 0% 100%);
+    left: 23vw;
+    bottom: 24.4vw;
+    width: 2vw;
+    height: 1.5vw;
+    z-index: 10;
+}
+
+.uitsteeksel2:nth-child(2n) { /* Tweede child van uitsteeksel */
+    margin-left: 2.5vw;
+}
+
+/* Achtste huis */
+.huis8 {
+    position: absolute;
+    background-color: var(--night-color);
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
+    left: 28.5vw;
+    bottom: 12vw;
+    width: 7vw;
+    height: 8vw;
+}
+
+/* Negende huis */
+.huis9 {
+    position: absolute;
+    background-color: var(--night-color);
+    clip-path: polygon(29% 0, 80% 0, 80% 22%, 100% 29%, 100% 100%, 0 100%, 0 0, 29% 9%);
+    left: 32vw;
+    bottom: 12vw;
+    width: 6.5vw;
+    height: 15vw;
+}
+
+/* Tiende huis */
+.huis10 {
+    position: absolute;
+    background-color: var(--darkblue3);
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 34vw;
+    bottom: 12vw;
+    width: 7vw;
+    height: 8vw;
+}
+
+.huis10 .wrapperRaamRow { /* Wrapper voor de ramen van huis 10*/
+    top: .8vw;
+    width: 6vw;
+}
+
+.huis10 .raam { /* Ramen van huis 10 */
+    width: .8vw;
+    height: 3vw;
+    animation-delay: 28s;
+}
+
+/************************************************************************
+7.3 - Achtergrond */
+/* Animatie voor het bewegen van de wolken */
+@keyframes vliegWolkjes {
+    100% {
+        transform: translateX(120vw);
+    }
+}
+
+/* Grote wolk */
+.groteWolk_2 {
+    animation-name: vliegWolkjes;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    position: absolute;
+    top: 45vw;
+    left: -30vw;
+    z-index: -1;
+}
+
+.groteWolk_2:nth-of-type(2n) {
+    animation-direction: reverse;
+    top: 55vw;
+    left: -20vw;
+}
+
+.groteWolk_2 .wolk {
+    bottom: 35vw;
+    left: -6.4vw;
+    width: 3vw;
+    height: 3vw;
+}
+
+.groteWolk_2 .wolk:nth-of-type(2n) {
+    bottom: 36vw;
+    left: -8vw;
+}
+
+.groteWolk_2 .wolk:nth-of-type(3n) {
+    bottom: 34.5vw;
+    left: -8.1vw;
+}
+
+.groteWolk_2 .wolk:nth-of-type(4n) {
+    bottom: 35vw;
+    left: -10vw;
+}
+
+/* Sterren */
+/* Animatie voor de opkomst van de grote ster */
+@keyframes opkomstSter {
+    0% {
+        top: 30vw;
+    }
+
+    100% {
+        top: 7vw;
+        transform: rotate(415deg);
+    }
+}
+
+.ster { /* Globale stijling voor de sterren */
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    position: absolute;
+    transform: rotate(9deg);
+    z-index: -2;
+}
+
+.groteSter { /* De grote gele ster(ren) */
+    background-color: var(--yellow);
+    width: 6vw;
+    height: 6vw;
+    top: 30vw;
+    left: 55vw;
+    animation-name: opkomstSter;
+    transform-origin: center;
+    animation-duration: 30s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-delay: 10s;
+}
+
+.groteSter:nth-of-type(2n) {
+    left: -17vw;
+}
+
+/* Animatie voor de opkomst van de kleine sterren */
+@keyframes opkomstKleineSter {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* De kleine ster */
+.kleineSter {
+    background-color: #FFFFFF;
+    width: 1vw;
+    height: 1vw;
+    top: 5vw;
+    left: 68vw;
+    opacity: 0;
+    animation-name: opkomstKleineSter;
+    animation-duration: 10s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    animation-delay: 40s;
+}
+
+.kleineSter:nth-of-type(2n) {
+    top: 5vw;
+    left: -13vw;
+}
+
+.kleineSter:nth-of-type(3n) {
+    top: 10vw;
+    left: -21vw;
+}
+
+.kleineSter:nth-of-type(4n) {
+    top: 12vw;
+    left: 65vw;
+}
+
+.kleineSter:nth-of-type(5n) {
+    top: 9vw;
+    left: 61vw;
+}
+
+.kleineSter:nth-of-type(6n) {
+    top: 7vw;
+    left: -8vw;
+}
+
+/****************************************************************************
+8.0 - Menu */
+.menu {
+    left: 43.5vw;
+    top: 44vw;
+    z-index: 100;
+    position: absolute;
+    display: flex;
+}
+
+.blauw, .paars, .geel {
+    width: 3vw;
+    margin-left: 2vw;
+    height: 3vw;
+    border-radius: 50%;
+    border: .1vw solid white;
+}
+
+.blauw {
+    margin: 0;
+    background-color: #57F8D9;
+}
+
+.paars {
+    background-color: purple;
+}
+
+.geel {
+    background-color: #FFFF33;
+}
+
+@media all and (display-mode: fullscreen) {
+    .voorgrond6 {
+        top: calc(55vh - 24vw);
+    }
+
+    .trein {
+        top: .9vw;
+    }
+
+    .menu {
+        top: 51vw;
+    }
+}
