@@ -1,6 +1,6 @@
 # Animeren met CSS
 
-##Korte introductie
+## Korte introductie
 
 Voor dit project heb ik een bestaande illustratie gekozen om na te bootsen in CSS. Hierbij heb ik gebruik gemaakt van clip-paths, data-themes, CSS-variablen, DOM-manipulatie, transform en calc. 
 
